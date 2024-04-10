@@ -1,5 +1,6 @@
 <template>
     <div class="min-h-full">
+
         <TransitionRoot as="template" :show="sidebarOpen">
             <Dialog as="div" class="relative z-40 lg:hidden" @close="sidebarOpen = false">
                 <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
@@ -43,8 +44,8 @@
                 <span class="flex min-w-0 items-center justify-between space-x-3">
                   <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" alt="" />
                   <span class="flex min-w-0 flex-1 flex-col">
-                    <span class="truncate text-sm font-medium text-gray-900">Jessy Schwarz</span>
-                    <span class="truncate text-sm text-gray-500">@jessyschwarz</span>
+                    <span class="truncate text-sm font-medium text-gray-900">{{currentUser.name}}</span>
+                    <span class="truncate text-sm text-gray-500">{{currentUser.email}}</span>
                   </span>
                 </span>
               </span>
@@ -119,7 +120,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+
+import {computed, onMounted, ref} from 'vue'
 import {
     Dialog,
     DialogPanel,
@@ -130,12 +132,16 @@ import {
 } from '@headlessui/vue'
 import { Bars3CenterLeftIcon, Bars4Icon, HomeIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import {MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+import store from "../../store/index.js";
 const sidebarOpen = ref(false)
 const displayName= ref('Dashboard')
+
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
     { name: 'Posts', href: '/posts', icon: Bars4Icon, current: false },
 ]
+const currentUser = computed(() => store.state.user.data);
+
 
 const Dimgray =(i) => {
     const selected = navigation.find(item => item.current);
@@ -144,6 +150,7 @@ const Dimgray =(i) => {
     sidebarOpen.value=false
     displayName.value = navigation[i].name
 }
+
 
 
 </script>

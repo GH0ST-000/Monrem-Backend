@@ -15,11 +15,7 @@ axiosClient.interceptors.response.use(response => {
     return response;
 }, error => {
     if (error.response.status === 401) {
-        // Cookies.remove('token');
-        localStorage.clear();
-        sessionStorage.removeItem('EMAIL')
         sessionStorage.clear()
-        location.reload();
     }
     throw error;
 })

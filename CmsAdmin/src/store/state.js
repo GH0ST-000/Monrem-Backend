@@ -1,7 +1,7 @@
 
 const store = {
     user: {
-        token:'11',
+        token:sessionStorage.getItem('TOKEN'),
         data: {}
     },
 };
