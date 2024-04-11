@@ -21,6 +21,26 @@ const routes=[
             name:'app.posts',
             component: () => import('../views/Posts.vue'),
         },
+        {
+            path:'/about-us',
+            name:'app.about-us',
+            component: () => import('../views/About.vue'),
+        },
+        {
+            path:'/services',
+            name:'app.services',
+            component: () => import('../views/Services.vue'),
+        },
+        {
+            path:'/product',
+            name:'app.product',
+            component: () => import('../views/Product.vue'),
+        },
+        {
+            path:'/contact-us',
+            name:'app.contact-us',
+            component: () => import('../views/Contact.vue'),
+        },
 
     ]
   },
