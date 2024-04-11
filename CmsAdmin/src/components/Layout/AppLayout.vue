@@ -109,7 +109,6 @@
                         <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">{{displayName}}</h1>
                     </div>
                 </div>
-
                   <div class="sm:p-8 p-3">
                       <router-view></router-view>
                   </div>
@@ -130,7 +129,8 @@ import {
     TransitionChild,
     TransitionRoot,
 } from '@headlessui/vue'
-import { Bars3CenterLeftIcon, Bars4Icon, HomeIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { Bars3CenterLeftIcon, Bars4Icon, HomeIcon,BriefcaseIcon,
+    AdjustmentsHorizontalIcon, XMarkIcon,ArrowsPointingOutIcon,ChatBubbleLeftEllipsisIcon } from '@heroicons/vue/24/outline'
 import {MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import store from "../../store/index.js";
 const sidebarOpen = ref(false)
@@ -139,6 +139,10 @@ const displayName= ref('Dashboard')
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
     { name: 'Posts', href: '/posts', icon: Bars4Icon, current: false },
+    { name: 'About us', href: '/about-us', icon: ArrowsPointingOutIcon, current: false },
+    { name: 'Services', href: '/services', icon: AdjustmentsHorizontalIcon, current: false },
+    { name: 'Product', href: '/product', icon: BriefcaseIcon, current: false },
+    { name: 'Contact us', href: '/contact-us', icon: ChatBubbleLeftEllipsisIcon, current: false },
 ]
 const currentUser = computed(() => store.state.user.data);
 
