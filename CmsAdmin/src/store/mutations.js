@@ -1,5 +1,4 @@
 export function setUser(state, user) {
-    console.log(user)
     state.user.data = user;
 }
 

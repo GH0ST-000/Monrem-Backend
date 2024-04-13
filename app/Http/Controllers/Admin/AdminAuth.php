@@ -25,4 +25,9 @@ class AdminAuth extends Controller
         ]
         );
     }
+
+    public function user(Request $request)
+    {
+        return  $request->user();
+    }
 }

@@ -21,7 +21,7 @@
                             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                                 <nav class="px-2">
                                     <div class="space-y-1">
-                                        <RouterLink v-for="(item,i) in navigation" :key="item.name"  :to="item.href" class="cursor-pointer" @click="Dimgray(i)"  :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5']" :aria-current="item.current ? 'page' : undefined">
+                                        <RouterLink v-for="(item,i) in navigation" :key="item.name"  :to="item.href" class="cursor-pointer"  :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5']" :aria-current="item.current ? 'page' : undefined">
                                             <component :is="item.icon" :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                                             {{ item.name }}
                                         </RouterLink>
@@ -64,7 +64,7 @@
                 <nav class="mt-6 px-3">
                     <div class="space-y-1">
 
-                        <RouterLink v-for="(item,i) in navigation" :key="item.name" :to="item.href" @click="Dimgray(i)" :class="[item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center rounded-md px-2 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">
+                        <RouterLink v-for="(item,i) in navigation" :key="item.name" :to="item.href" :class="[item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center rounded-md px-2 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">
                             <component :is="item.icon"  :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                             {{ item.name }}
                         </RouterLink>
@@ -106,7 +106,7 @@
             <main class="flex-1">
                 <div class="border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
                     <div class="min-w-0 flex-1">
-                        <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">{{displayName}}</h1>
+                        <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">POST</h1>
                     </div>
                 </div>
                   <div class="sm:p-8 p-3">
@@ -129,31 +129,21 @@ import {
     TransitionChild,
     TransitionRoot,
 } from '@headlessui/vue'
-import { Bars3CenterLeftIcon, Bars4Icon, HomeIcon,BriefcaseIcon,
-    AdjustmentsHorizontalIcon, XMarkIcon,ArrowsPointingOutIcon,ChatBubbleLeftEllipsisIcon } from '@heroicons/vue/24/outline'
+import { Bars3CenterLeftIcon, HomeIcon , XMarkIcon } from '@heroicons/vue/24/outline'
 import {MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import store from "../../store/index.js";
 const sidebarOpen = ref(false)
-const displayName= ref('Dashboard')
 
 const navigation = [
-    { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
-    { name: 'Posts', href: '/posts', icon: Bars4Icon, current: false },
-    { name: 'About us', href: '/about-us', icon: ArrowsPointingOutIcon, current: false },
-    { name: 'Services', href: '/services', icon: AdjustmentsHorizontalIcon, current: false },
-    { name: 'Product', href: '/product', icon: BriefcaseIcon, current: false },
-    { name: 'Contact us', href: '/contact-us', icon: ChatBubbleLeftEllipsisIcon, current: false },
+    { name: 'Dashboard', href: '/posts', icon: HomeIcon, current: true },
 ]
 const currentUser = computed(() => store.state.user.data);
 
 
-const Dimgray =(i) => {
-    const selected = navigation.find(item => item.current);
-    selected.current = false;
-    navigation[i].current=true;
-    sidebarOpen.value=false
-    displayName.value = navigation[i].name
-}
+onMounted(() => {
+    store.dispatch('getUser')
+
+})
 
 
 

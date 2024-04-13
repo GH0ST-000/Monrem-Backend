@@ -16,6 +16,7 @@ axiosClient.interceptors.response.use(response => {
 }, error => {
     if (error.response.status === 401) {
         sessionStorage.clear()
+        location.reload()
     }
     throw error;
 })
