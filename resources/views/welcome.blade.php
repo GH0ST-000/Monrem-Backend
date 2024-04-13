@@ -46,21 +46,22 @@
     <img src="./img/hero.jpeg" alt="Hero Image" class="col-12 mt-4">
 </section>
 
-
+@foreach($posts as $post)
+    @if($post->status ==1 && $post->title == 'About')
 <section class="container mx-auto d-flex flex-column flex-lg-row mt-2" >
     <div class="col-12 col-lg-6">
         <h3 class="pt-5">ABOUT US</h3>
         <p class="about-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
         <div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            {!! $post->details->content !!}
         </div>
     </div>
     <div class="col-12 col-lg-6">
-        <img src="./img/about_img.jpeg" alt="Hero Image" class="col-12">
+        <img src="{{$post->details->image}}" alt="Hero Image" class="col-12">
     </div>
 </section>
+    @endif
+@endforeach
 
 <section class="col-12 pt-5 pb-5" style="background: #EDF3F1">
     <div class="container mx-auto">
@@ -71,44 +72,16 @@
         </div>
 
         <div class="services-wrapper">
+            @foreach($posts as $post)
+                @if($post->status ==1 && $post->title == 'Services')
             <div class="col-3">
-                <div class="mt-2">
-                    <p class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
-                </div>
-                <div class="mt-2">
-                    <p class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
-                </div>
-                <div class="mt-2">
-                    <p class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
-                </div>
+                {!! $post->details->content !!}
             </div>
 
-            <div class="col-3">
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-            </div>
-
-
-            <div class="col-3">
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-                <div class="mt-2">
-                    <li class="service-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</li>
-                </div>
-            </div>
-
+                @endif
+            @endforeach
         </div>
+
     </div>
 
 </section>
@@ -116,48 +89,36 @@
 <section class="container mx-auto mb-4 mt-4">
     <h3>PRODUCTS</h3>
     <div class="image-grid">
+        @foreach($posts as $post)
+            @if($post->status ==1 && $post->title == 'Product')
         <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
+            <div class="effect">
+
+                <img src="{{$post->details->image}}"
+                     alt="test" class="img-responsive " style="height: 300px">
+                <div class="carousel slide">
+                    <div class="carousel-caption mt-2 mb-2">
+                        {{$post->details->content}}
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-        <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
-        </div>
+            @endif
+        @endforeach
 
 
-        <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
-        </div>
 
 
-        <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
-        </div>
 
 
-        <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
-        </div>
 
-
-        <div class="image-container">
-            <img class="image" src="./img/hero.jpeg" alt="Image 1">
-            <div class="title"> Wheat</div>
-            <p>some text some tex some tex some tex some tex some tex some tex some tex</p>
-        </div>
     </div>
 
 </section>
+
+
 
 
 <section class="container flex-wrap d-flex gap-5 mt-5 mb-5 mx-auto justify-content-center" id="logoSection">
@@ -167,28 +128,12 @@
 <section class="contact-container mt-2 col-12 d-flex flex-column flex-lg-row mt-2">
     <div class="contact-us-container col-12 col-lg-6 pb-5">
         <h3 class="pt-5 ps-5">CONTACT US</h3>
-        <p class="mt-4 ps-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
-        <div class="d-flex gap-2 align-items-center ps-5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-            <p class="m-0">Tbilisi, Oniashvili street 57</p>
-        </div>
-
-        <div class="d-flex gap-2 align-items-center ps-5 mt-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M18.48 22.926l-1.193.658c-6.979 3.621-19.082-17.494-12.279-21.484l1.145-.637 3.714 6.467-1.139.632c-2.067 1.245 2.76 9.707 4.879 8.545l1.162-.642 3.711 6.461zm-9.808-22.926l-1.68.975 3.714 6.466 1.681-.975-3.715-6.466zm8.613 14.997l-1.68.975 3.714 6.467 1.681-.975-3.715-6.467z"/></svg>
-            <p class="m-0">+00 22 123 321</p>
-        </div>
-
-        <div class="d-flex gap-2 align-items-center ps-5 mt-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M17 5v17h-10v-17h10zm2-5h-2v3h-10c-1.104 0-2 .896-2 2v17c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-22zm-9 20h-2v-1h2v1zm0-2h-2v-1h2v1zm0-2h-2v-1h2v1zm3 4h-2v-1h2v1zm0-2h-2v-1h2v1zm0-2h-2v-1h2v1zm3 4h-2v-1h2v1zm0-2h-2v-1h2v1zm0-2h-2v-1h2v1zm0-3h-8v-6h8v6z"/></svg>
-            <p class="m-0">+00 22 123 321</p>
-        </div>
-
-        <div class="d-flex gap-2 align-items-center ps-5 mt-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
-            <p class="m-0">info@company.com</p>
-        </div>
-
+        @foreach($posts as $post)
+           @if($post->status ==1 && $post->title == 'Contact')
+                {!! $post->details->content  !!}
+           @endif
+        @endforeach
     </div>
     <div class="col-12 col-lg-6  d-flex flex-column align-items-center">
         <h3 class="pt-5 ps-5">GET IN TOUCH</h3>
