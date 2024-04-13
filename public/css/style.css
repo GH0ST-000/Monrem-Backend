@@ -98,10 +98,10 @@
   padding: 10px;
 }
 
-.image-container:hover p {
-  display: block;
-  bottom: 0;
-}
+/*.image-container:hover p {*/
+/*  display: block;*/
+/*  bottom: 0;*/
+/*}*/
 
 .title {
   position: absolute;
@@ -119,10 +119,13 @@
 
 }
 
-.image-container p,
-.image-container:hover .title {
-  display: none;
-}
+/*.image-container p,*/
+/*.image-container:hover .title {*/
+/*  display: none;*/
+/*}*/
+
+
+
 
 @media (max-width: 768px) {
   .header-border{
